@@ -1,4 +1,7 @@
 /* <!-- header --> */
+#header {
+    overflow: hidden;
+}
 
 /* <!-- navbar --> */
 .header__navbar-wrap {
@@ -114,7 +117,16 @@
 
 /* <!-- Header-main --> */
 .header-main-container {
+    width: 100%;
     background: #FFFFFF;
+}
+
+.header-main-container.fly {
+    position:sticky;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .header-main {
@@ -164,7 +176,6 @@
 
 .header-main__category-list {
     position: relative;
-    display: none;
     justify-content: center;
     z-index: 5;
 }
@@ -201,7 +212,7 @@
     position: absolute;
     display: flex;
     right: 0;
-    z-index: 5;
+    z-index: 4;
     justify-content: flex-end;
     align-items: center;
     min-height: var(--height-header-main);
@@ -288,7 +299,6 @@
     background: #85858534;
 }
 
-
 .header-main__link {
     position: relative;
     color: var(--text-color);
@@ -302,20 +312,18 @@
 }
 
 /* <!-- Category-menu --> */
-.header-main:hover {
-    position: sticky;
-    top: 0;
-}
-
 .header-main__category-menu {
-    position: relative;
-    display: none;
+    position: absolute;
     height: 650px;
     animation: category-menu ease 0.2s;
-    background-color: var(--white-color);
+    background: var(--white-color);
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    background:var(--white-color);
 }
 
-/* @keyframes category-menu {
+@keyframes category-menu {
     from {
         height: 400px;
         opacity: 0;
@@ -325,15 +333,6 @@
         height: 650px;
         opacity: 1;
     }
-} */
-
-.header-main__category-items:hover .header-main__category-menu {
-    /* position: fixed; */
-    display: block;
-    flex-direction: column;
-    top: calc(var(--height-navbar)+ var(--height-header-main));
-    right: 0;
-    left: 0;
 }
 
 .header-main__category-menu-wrap {
@@ -494,7 +493,6 @@
         transform: scale(1.1);
     }
 }
-
 /* End-Focus-search-input */
 
 /* No-focus-search-input */
@@ -528,7 +526,6 @@
 
     }
 }
-
 /* End-No-focus-search-input */
 
 /* <!-- Sub-header-content --> */
@@ -555,50 +552,331 @@
     font-size: var(--font-size-sub-header-content__text);
     color: var(--text-color);
 }
-
 /* <!-- End-Sub-header-content --> */
+/* <!-- End-Header-main --> */
 
-/* <!-- Banner-home --> */
-.banner-home {
+/* <!-- Content --> */
+/* <!-- Banner-head --> */
+.banner-head {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--white-color);
+}
+
+.banner-home__img:nth-child(3) {
+    display: none;
+}
+/* <!-- End-Banner-head --> */
+
+/* <!-- Stall --> */
+
+/* base.css */
+
+/* <!-- End-Stall --> */
+
+/* <!-- Gear-up --> */
+.gear-up {
+    margin-top: 80px;
+}
+
+.gear-up__title {
+    margin-bottom: 20px;
+}
+
+.gear-up-img {
+    width: 100%;
+}
+
+.gear-up__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    margin-top: 50px;
+}
+
+.gear-up__content-text {
+    color: inherit;
+    font-size: inherit;
+}
+
+.gear-up__content-title {
+    color: inherit;
+    text-transform: uppercase;
+    font-size: 7rem;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -7px;
+    margin-top: 4px;
+}
+
+.gear-up__content-title-sub {
+    color: inherit;
+    font-size: inherit;
+    margin: 25px 0;
+}
+/* <!-- End-Gear-up --> */
+
+/* <!-- Dont-miss --> */
+.dont-miss {
+    position: relative;
+    color: var(--text-color);
+    margin-top: 85px;
+    overflow: hidden;
+}
+
+.dont-miss__title {
+    margin-bottom: 20px;
+}
+
+.dont-miss__banner {
+    width: 100%;
+}
+
+.dont-miss__btn {
+    color: var(--white-color);
+    background-color: var(--text-color);
+}
+/* <!-- End-Dont-miss --> */
+
+/* <!-- Category --> */
+.category {}
+
+.category__title {
+    margin-bottom: 20px;
+}
+
+.category__items {
     position: relative;
 }
-.banner-home__img {
+
+.category__img {
     display: block;
-    text-decoration: none;
-    color: #000;
     width: 100%;
+
 }
 
-.banner-home__content {
+.category__btn {
     position: absolute;
-    display: flex;
-    bottom: 20%;
-    left: 5%;
-    flex-direction: column;
-    width: 40%;
-    color: var(--white-color);
-}
-
-.banner-home__text {
-    font-size: 1.8rem;
-}
-
-.banner-home__title {
-    color: var(--white-color);
-    font-size: 8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -8px;
-    line-height: 0.8;
-}
-
-.banner-home__btn-box {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.banner-home__btn {
+    bottom: 10%;
+    left: 14%;
     color: var(--text-color);
-    background-color: var(--white-color);
+    background: var(--white-color);
+    width: unset;
+    padding: 0 15px;
 }
+
+.category__btn:hover {
+    background-color: #cecece;
+}
+
+/* <!-- End-Category --> */
+
+/* <!-- Category-2 --> */
+.category-2 {
+    margin: 120px 0;
+}
+
+.category-2__wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.category-2__title {
+    position: relative;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.category-2__title-close-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: transparent;
+    border: 0;
+}
+
+.category-2__title-close-btn.show {
+    display: block;
+}
+
+.category-2__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-2__list {
+    min-width: 13vw;
+    list-style: none;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.category-2__list-2 {
+    transition: opacity ease 1s;
+
+}
+
+.category-2__items {
+    font-size: 1.7rem;
+    color: var(--text-color-bland);
+    font-weight: 300;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+/* <!-- End-Category-2 --> */
+/* <!-- End-Content --> */
+
+/* <!-- Footer --> */
+.footer {
+    background: var(--text-color);
+    padding-top: 40px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.footer__wrap {
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* <!-- About --> */
+.footer__about-nike-list {
+    display: inline-flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.footer__about-nike-list:first-child {
+    padding-left: 10px;
+}
+
+.footer__about-nike-title {
+    display: block;
+    text-transform: uppercase;
+    text-decoration: inherit;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: rgb(226, 226, 226);
+    padding-bottom: 20px;
+    letter-spacing: 0.02rem;
+}
+
+.footer__about-nike-text {
+    display: inline-flex;
+    text-decoration: inherit;
+    font-size: 1.2rem;
+    color: var(--text-color-bland);
+    padding-bottom: 12px;
+    transform: translateY(-8px);
+}
+
+/* <!-- End-About --> */
+
+/* <!-- Location --> */
+.footer__location {
+    padding-top: 10px;
+    font-size: 1.1rem;
+}
+
+.footer__location-content {
+    display: inline-block;
+    font-size: inherit;
+    text-decoration: inherit;
+}
+
+.footer__location svg {
+    margin-bottom: -2px;
+    margin-right: 5px;
+}
+
+.footer__location-content:first-child {
+    text-align: center;
+    color: var(--white-color);
+    font-weight: 700;
+    padding-right: 20px;
+    padding-left: 0px;
+}
+
+.footer__location-content:last-child {
+    font-size: 1.2rem;
+    color: var(--text-color-bland);
+}
+
+/* <!-- Location --> */
+
+/* <!-- Contact --> */
+.footer__contact-nike {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 260px;
+}
+
+.footer__contact-nike-social-icon svg {
+    margin: 0 6px;
+    fill: #7e7e7e;
+    border-radius: 50%;
+}
+
+.footer__contact-nike-social-icon a {
+    text-decoration: none;
+}
+
+.footer__contact-nike-social-icon svg:hover {
+    fill: var(--white-color)
+}
+
+.footer__contact-nike-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: var(--text-color-bland);
+    margin-left: 16px;
+}
+
+.footer__contact-nike-link:hover,
+.footer a:hover,
+.footer svg {
+    color: var(--white-color);
+}
+
+.footer__contact-nike-guides-menu {
+    position: relative;
+    overflow: hidden;
+    width: 40vw;
+    max-width: 600px;
+    max-height: 180px;
+    padding: 20px 30px;
+    margin-bottom: 10px;
+    background: var(--text-color);
+    border: 2px solid #eee;
+    border-bottom: 3px solid #eee;
+}
+
+.footer__contact-nike-guides-menu-list {
+    list-style: none;
+    font-size: 1.2rem;
+    color: var(--text-color-bland);
+}
+
+.footer__contact-nike-guides-menu-items {
+    font-size: inherit;
+    color: inherit;
+}
+
+.footer__contact-nike-guides-menu-items+.footer__contact-nike-guides-menu-items {
+    margin-top: 15px;
+}
+/* <!-- End-Contact --> */
+/* <!-- End-Footer --> */
