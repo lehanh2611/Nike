@@ -440,7 +440,11 @@
             <!-- Gear-up -->
             <div class="container grid wide gear-up">
                 <h3 class="gear-up__title">Gear Up</h3>
-                <img src="./asset/img/banner-gear-up.jpg" alt="" class="gear-up-img">
+                <video width="100%" autoplay="autoplay" loop="loop" preload="preload">
+                    <source src="./asset/vid/Nike. Just Do It. Nike VN.mp4" type="video/mp4">
+
+                </video>
+                <!-- <img src="./asset/img/banner-gear-up.jpg" alt="" class="gear-up-img"> -->
                 <div class="gear-up__content">
                     <p class="gear-up__content-text">Junt In: Fast Pack</p>
                     <h2 class="gear-up__content-title">Find your fast</h2>
@@ -1062,7 +1066,7 @@
                 backdrop-filter: blur(4px);
             }
 
-           .header-main__nav-bar-background.module-category_menu--show-ds {
+            .header-main__nav-bar-background.module-category_menu--show-ds {
                 display: unset !important;
             }
 
@@ -1335,7 +1339,7 @@
                     header_main_nav_bar_menu_wrap.classList.add('show');
                 }, 200)
             }
-            
+
             function back_menu_child_1() {
                 header_main_nav_bar_menu_wrap.classList.remove('show');
                 setTimeout(function () {
