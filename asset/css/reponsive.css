@@ -332,6 +332,15 @@
         }
     }
 
+    /* <!-- Gear-up --> */
+    .gear-up__video-controls {
+        opacity: 1;
+        background: transparent;
+    }
+
+    /* <!-- End-Gear-up --> */
+
+
     /* Banner-home */
     .banner-home__title {
         font-size: 6rem;
