@@ -77,6 +77,10 @@ background: var(--text-color-bland);
     color: var(--white-color) !important;
 }
 
+.focus.module {
+    color: unset;
+}
+
 .hide {
     display: none !important;
 }

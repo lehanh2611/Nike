@@ -33,6 +33,16 @@
         font-size: 11px;
     }
 
+
+    .opacity-0-mobile {
+        opacity: 0;
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
+
+
     /* <!-- Banner-home --> */
     .banner-home__content {
         position: unset;
@@ -220,6 +230,9 @@
         border: 0;
         background-color: transparent;
         cursor: pointer;
+    }
+    .footer__contact-nike-guides-menu.hide-guides-menu{
+        display: none;
     }
 
     .category-2__wrap {
@@ -421,12 +434,25 @@
         transform: translateY(10px);
     }
 
+    .footer__about-nike-title {
+        font-size: 1.2rem;
+    }
+
 }
 
 /* Tablet and PC*/
 @media (min-width: 600px) {
 
+    .focus-pc {
+        color: var(--white-color) !important;
+    }
+
     /* Category-2 */
+    .category-2__list {
+        width: 18vw;
+        max-width: 345px;
+    }
+
     .category-2__list-2 {
         visibility: hidden;
         opacity: 0;
@@ -450,8 +476,13 @@
         transition-delay: .5s;
     }
 
-    .category-2__column:first-child {
-        margin-left: 2vw;
+    .category-2__items {
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
     }
 
     /* Footer */
@@ -459,6 +490,19 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .footer__contact-nike-link:nth-child(2)::before {
+        content: "";
+        position: absolute;
+        top: -109%;
+        left: -20%;
+        right: -20%;
+        height: 30px;
+    }
+    /* Footer */
+    .footer__contact-nike-guides-menu.module.hide-guides-menu{
+        display: none;
     }
 }
 

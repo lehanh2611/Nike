@@ -39,6 +39,7 @@ const about_nike_icon_plus = document.querySelector('.js-about-nike-icon-plus')
 const about_nike_icon_minus = document.querySelector('.js-about-nike-icon-minus')
 const footer__about_nike_btn_close_get_help = document.querySelector('.footer__about-nike-btn-close-get-help')
 const footer__about_nike_btn_close = document.querySelector('.footer__about-nike-btn-close')
+let footer__contact_nike_guides_wall = document.querySelector('.js-footer__contact-nike-guides-wall')
 const menu_guides = document.querySelector('.footer__contact-nike-guides-menu')
 const footer__contact_nike_guides_menu_btn = document.querySelector('.js-footer__contact-nike-guides-menu-btn')
 const footer__contact_nike_guides_menu_close_btn = document.querySelector('.footer__contact-nike-guides-menu-close-btn')
@@ -78,6 +79,7 @@ footer__contact_nike_guides_menu_btn.addEventListener('mouseout', hide_menu_guid
 footer__contact_nike_guides_menu_btn.addEventListener('mouseover', show_menu_guides)
 menu_guides.addEventListener('mouseout', hide_menu_guides_2)
 menu_guides.addEventListener('mouseover', show_menu_guides_2)
+footer__contact_nike_guides_wall.addEventListener('mouseout', hide_menu_guides3)
 footer__contact_nike_guides_menu_close_btn.addEventListener('click', hide_menu_guides)
 category_2__title_1.addEventListener('click', show_category_2__title_1)
 category_2__title_2.addEventListener('click', show_category_2__title_2)
@@ -247,8 +249,8 @@ function show_items_cetegory() {
 }
 
 function show_menu_get_help() {
-    about_nike_menu.classList.add('hide')
-    get_help_menu.classList.remove('hide')
+    about_nike_menu.classList.add('hide-mobile')
+    get_help_menu.classList.remove('hide-mobile')
     get_help_icon_plus.classList.add('hide')
     get_help_icon_minus.classList.remove('hide')
     footer__about_nike_btn_close_get_help.classList.remove('hide')
@@ -258,15 +260,15 @@ function show_menu_get_help() {
 
     setTimeout(function () {
         get_help_menu.classList.add('animation-in')
-        get_help_menu.classList.remove('opacity-0')
+        get_help_menu.classList.remove('opacity-0-mobile')
         about_nike_menu.classList.remove('animation-in')
-        about_nike_menu.classList.add('opacity-0')
+        about_nike_menu.classList.add('opacity-0-mobile')
     }, 1);
 }
 
 function show_menu_about_nike() {
-    get_help_menu.classList.add('hide')
-    about_nike_menu.classList.remove('hide')
+    get_help_menu.classList.add('hide-mobile')
+    about_nike_menu.classList.remove('hide-mobile')
     about_nike_icon_plus.classList.add('hide')
     about_nike_icon_minus.classList.remove('hide')
     footer__about_nike_btn_close.classList.remove('hide')
@@ -276,20 +278,20 @@ function show_menu_about_nike() {
 
     setTimeout(function () {
         get_help_menu.classList.remove('animation-in')
-        get_help_menu.classList.add('opacity-0')
+        get_help_menu.classList.add('opacity-0-mobile')
         about_nike_menu.classList.add('animation-in')
-        about_nike_menu.classList.remove('opacity-0')
+        about_nike_menu.classList.remove('opacity-0-mobile')
     }, 1);
 }
 
 function hide_menu_get_help() {
-    get_help_menu.classList.add('opacity-0')
+    get_help_menu.classList.add('opacity-0-mobile')
     setTimeout(function () {
         get_help_menu.classList.add('animation-out')
     }, 250);
     setTimeout(function () {
         get_help_menu.classList.remove('animation-in')
-        get_help_menu.classList.add('hide')
+        get_help_menu.classList.add('hide-mobile')
         get_help_icon_plus.classList.remove('hide')
         get_help_icon_minus.classList.add('hide')
         footer__about_nike_btn_close_get_help.classList.add('hide')
@@ -298,12 +300,12 @@ function hide_menu_get_help() {
 }
 
 function hide_menu_about_nike() {
-    about_nike_menu.classList.add('opacity-0')
+    about_nike_menu.classList.add('opacity-0-mobile')
     setTimeout(function () {
         about_nike_menu.classList.add('animation-out')
     }, 250);
     setTimeout(function () {
-        about_nike_menu.classList.add('hide')
+        about_nike_menu.classList.add('hide-mobile')
         about_nike_icon_plus.classList.remove('hide')
         about_nike_icon_minus.classList.add('hide')
         footer__about_nike_btn_close.classList.add('hide')
@@ -313,8 +315,11 @@ function hide_menu_about_nike() {
 }
 
 function show_menu_guides() {
+    menu_guides.classList.remove('hide-mobile')
+    menu_guides.classList.remove('module')
     menu_guides.classList.remove('hide')
     setTimeout(function () {
+        menu_guides.classList.remove('hide-guides-menu')
         footer__contact_nike_guides_menu_close_btn.classList.remove('hide')
     }, 1)
     setTimeout(function () {
@@ -323,26 +328,37 @@ function show_menu_guides() {
 }
 
 function show_menu_guides_2() {
+    menu_guides.classList.remove('module')
     menu_guides.classList.remove('hide')
     setTimeout(function () {
-        footer__contact_nike_guides_menu_btn.classList.add('focus')
+        menu_guides.classList.remove('hide-guides-menu')
+        footer__contact_nike_guides_menu_btn.classList.add('focus-pc')
     }, 2)
 }
 function hide_menu_guides() {
-    menu_guides.classList.add('hide')
+    menu_guides.classList.add('hide-guides-menu')
     setTimeout(function () {
         footer__contact_nike_guides_menu_close_btn.classList.add('hide')
     }, 1)
     setTimeout(function () {
         footer__contact_nike_guides_menu_btn.classList.remove('focus')
     }, 2)
+
 }
 
 function hide_menu_guides_2() {
-    footer__contact_nike_guides_menu_btn.classList.remove('focus')
+    footer__contact_nike_guides_menu_btn.classList.remove('focus-pc')
+    menu_guides.classList.add('hide-mobile')
     setTimeout(function () {
-        menu_guides.classList.add('hide')
+        menu_guides.classList.add('hide-guides-menu')
     }, 1)
+
+}
+
+function hide_menu_guides3() {
+    setTimeout(function () {
+        menu_guides.classList.add('module')
+    }, 2)
 }
 
 function show_category_2__title_1() {
@@ -405,6 +421,141 @@ function hide_category_2__title_4() {
 }
 ///////////////////////////////////
 
+/***** Slied - Sub-header-content *****/
+let slideContainer = document.querySelector('.sub-header-content-slide-items')
+slide()
+function slide() {
+    let stringTitle = [
+        'Save Up to 40%',
+        'Hello Nike App',
+        'Free Delivery',
+        
+    ];
+    let stringContent = [
+        '',
+        'Download the app to access everything Nike.',
+        'Applies to orders of 5.000.000₫ or more.',
+    ];
+    let stringLink = [
+        'Shop All Our New Markdowns',
+        'View details',
+        'Get Your Great',
+    ]
+    let numberTitle = 0;
+    let numberContent = 0;
+    let numberLink = 0;
+
+    setTimeout(slide1, 5000)
+    function slide1() {
+        slideContainer.classList.remove('animation-start')
+        setTimeout(function () {
+            slideContainer.classList.add('animation-in')
+            document.getElementById("sub-header-content__title").innerHTML =
+                stringTitle[numberTitle++];
+
+            document.getElementById("sub-header-content__text").innerHTML =
+                stringContent[numberContent++];
+
+            document.getElementById("sub-header-content__link").innerHTML =
+                stringLink[numberLink++];
+            setTimeout(function () {
+                slideContainer.classList.remove('animation-in')
+            }, 5000)
+            if (numberTitle < stringTitle.length) {
+                setTimeout(slide2, 5100)
+            }
+            else {
+                setTimeout(slideOut1, 5100)
+                numberTitle = 0;
+                numberContent = 0;
+                numberLink = 0;
+            }
+        }, 300)
+    }
+
+    function slide2() {
+        slideContainer.classList.add('animation-in')
+        document.getElementById("sub-header-content__title").innerHTML =
+            stringTitle[numberTitle++];
+
+        document.getElementById("sub-header-content__text").innerHTML =
+            stringContent[numberContent++];
+
+        document.getElementById("sub-header-content__link").innerHTML =
+            stringLink[numberLink++];
+        setTimeout(function () {
+            slideContainer.classList.remove('animation-in')
+        }, 5000)
+        if (numberTitle < stringTitle.length) {
+            setTimeout(slide1, 5100)
+        }
+        else {
+            setTimeout(slideOut1, 5100)
+            numberTitle = 0;
+            numberContent = 0;
+            numberLink = 0;
+        }
+    }
+
+    function slideOut1() {
+        slideContainer.classList.add('animation-out')
+        document.getElementById("sub-header-content__title").innerHTML =
+            stringTitle[numberTitle++];
+
+        document.getElementById("sub-header-content__text").innerHTML =
+            stringContent[numberContent++];
+
+        document.getElementById("sub-header-content__link").innerHTML =
+            stringLink[numberLink++];
+        setTimeout(function () {
+            slideContainer.classList.remove('animation-out')
+        }, 300)
+        if (numberTitle < stringTitle.length) {
+            setTimeout(slideOut2, 400)
+        }
+        else {
+            numberTitle = 0;
+            numberContent = 0;
+            numberLink = 0;
+            slideContainer.classList.add('animation-end')
+            setTimeout(slide1, 5100)
+            setTimeout(function () {
+                slideContainer.classList.remove('animation-end')
+                slideContainer.classList.add('animation-start')
+            }, 600)
+        }
+    } function slideOut2() {
+        slideContainer.classList.add('animation-out')
+        document.getElementById("sub-header-content__title").innerHTML =
+            stringTitle[numberTitle++];
+
+        document.getElementById("sub-header-content__text").innerHTML =
+            stringContent[numberContent++];
+
+        document.getElementById("sub-header-content__link").innerHTML =
+            stringLink[numberLink++];
+        setTimeout(function () {
+            slideContainer.classList.remove('animation-out')
+        }, 300)
+        if (numberTitle < stringTitle.length) {
+            setTimeout(slideOut1, 400)
+        }
+        else {
+            numberTitle = 0;
+            numberContent = 0;
+            numberLink = 0;
+            slideContainer.classList.add('animation-end')
+            setTimeout(slide1, 5100)
+            setTimeout(function () {
+                slideContainer.classList.remove('animation-end')
+                slideContainer.classList.add('animation-start')
+            }, 600)
+        }
+    }
+
+}
+
+/***** Pause/muted Video - Gear-up *****/
 let gearUpVideo = document.getElementById('gear-up__video');
 gearUpVideo.addEventListener('click', Play_PauseVideo);
 function Play_PauseVideo() {
@@ -425,7 +576,7 @@ function mutedVideo() {
     }
     else {
         gearUpVideo.muted = true
-       
+
         videoControlsBtn.classList.add('fa-volume-xmark')
         videoControlsBtn.classList.remove('fa-volume-low')
     };
