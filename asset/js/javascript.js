@@ -421,7 +421,7 @@ function hide_category_2__title_4() {
 }
 ///////////////////////////////////
 
-/***** Slied - Sub-header-content *****/
+/***** Slide - Sub-header-content *****/
 let slideContainer = document.querySelector('.sub-header-content-slide-items')
 slide()
 function slide() {
@@ -445,8 +445,8 @@ function slide() {
     let numberContent = 0;
     let numberLink = 0;
 
-    setTimeout(slide1, 5000)
-    function slide1() {
+    setTimeout(slideIn1, 5000)
+    function slideIn1() {
         slideContainer.classList.remove('animation-start')
         setTimeout(function () {
             slideContainer.classList.add('animation-in')
@@ -462,7 +462,7 @@ function slide() {
                 slideContainer.classList.remove('animation-in')
             }, 5000)
             if (numberTitle < stringTitle.length - 1) {
-                setTimeout(slide2, 5100)
+                setTimeout(slideIn2, 5100)
             }
             else {
                 setTimeout(slideOut1, 4100)
@@ -473,7 +473,7 @@ function slide() {
         }, 300)
     }
 
-    function slide2() {
+    function slideIn2() {
         slideContainer.classList.add('animation-in')
         document.getElementById("sub-header-content__title").innerHTML =
             stringTitle[numberTitle++];
@@ -487,7 +487,7 @@ function slide() {
             slideContainer.classList.remove('animation-in')
         }, 5000)
         if (numberTitle < stringTitle.length - 1) {
-            setTimeout(slide1, 5100)
+            setTimeout(slideIn1, 5100)
         }
         else {
             setTimeout(slideOut1, 4100)
@@ -518,7 +518,7 @@ function slide() {
             numberContent = 0;
             numberLink = 0;
             slideContainer.classList.add('animation-end')
-            setTimeout(slide1, 5100)
+            setTimeout(slideIn1, 5100)
             setTimeout(function () {
                 slideContainer.classList.remove('animation-end')
                 slideContainer.classList.add('animation-start')
@@ -545,7 +545,7 @@ function slide() {
             numberContent = 0;
             numberLink = 0;
             slideContainer.classList.add('animation-end')
-            setTimeout(slide1, 5100)
+            setTimeout(slideIn1, 5100)
             setTimeout(function () {
                 slideContainer.classList.remove('animation-end')
                 slideContainer.classList.add('animation-start')
