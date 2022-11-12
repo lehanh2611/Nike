@@ -461,11 +461,11 @@ function slide() {
             setTimeout(function () {
                 slideContainer.classList.remove('animation-in')
             }, 5000)
-            if (numberTitle < stringTitle.length) {
+            if (numberTitle < stringTitle.length - 1) {
                 setTimeout(slide2, 5100)
             }
             else {
-                setTimeout(slideOut1, 5100)
+                setTimeout(slideOut1, 4100)
                 numberTitle = 0;
                 numberContent = 0;
                 numberLink = 0;
@@ -486,11 +486,11 @@ function slide() {
         setTimeout(function () {
             slideContainer.classList.remove('animation-in')
         }, 5000)
-        if (numberTitle < stringTitle.length) {
+        if (numberTitle < stringTitle.length - 1) {
             setTimeout(slide1, 5100)
         }
         else {
-            setTimeout(slideOut1, 5100)
+            setTimeout(slideOut1, 4100)
             numberTitle = 0;
             numberContent = 0;
             numberLink = 0;
@@ -511,7 +511,7 @@ function slide() {
             slideContainer.classList.remove('animation-out')
         }, 300)
         if (numberTitle < stringTitle.length) {
-            setTimeout(slideOut2, 400)
+            setTimeout(slideOut2, 320)
         }
         else {
             numberTitle = 0;
@@ -538,7 +538,7 @@ function slide() {
             slideContainer.classList.remove('animation-out')
         }, 300)
         if (numberTitle < stringTitle.length) {
-            setTimeout(slideOut1, 400)
+            setTimeout(slideOut1, 320)
         }
         else {
             numberTitle = 0;
