@@ -614,17 +614,17 @@ function activeButton() {
     // console.log(checkElementActive(scrollBars).scrollLeft)
     // console.log(afterValue)
     if (afterValue) {
-        btnRightActive.classList.remove('active')
+        // btnRightActive.classList.remove('active')
         checkElementActive(scrollBars).scrollLeft = 0
     }
     else {
-        btnRightActive.classList.add('active')
+        // btnRightActive.classList.add('active')
     }
     if (checkElementActive(scrollBars).scrollLeft > 0) {
-        btnLeftActive.classList.add('active')
+        // btnLeftActive.classList.add('active')
     }
     else {
-        btnLeftActive.classList.remove('active')
+        // btnLeftActive.classList.remove('active')
     }
 
     if (beforeValue < 0) {
