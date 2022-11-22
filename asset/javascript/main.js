@@ -626,9 +626,9 @@ function activeButton() {
 
 function clickRight(scrollbarActive) {
     scrollbarActive = checkElementActive(scrollBars)
-    beforeValue = scrollbarActive.scrollLeft + distanceValue
+    beforeValue = scrollbarActive.scrollLeft + ++distanceValue
     scrollbarActive.scrollLeft =
-        (scrollbarActive.scrollLeft + distanceValue);
+        (scrollbarActive.scrollLeft + ++distanceValue);
     setTimeout(() => { activeButton() }, 400)
 }
 
