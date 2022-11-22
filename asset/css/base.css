@@ -207,8 +207,8 @@ background: var(--text-color-bland);
     position: relative;
     overflow-x: scroll;
     overflow-y:hidden;
-    scroll-behavior: smooth;
     cursor: pointer;
+    scroll-behavior: smooth;
 }
 
 .stall__product-item-sp {
