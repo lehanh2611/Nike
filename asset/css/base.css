@@ -137,10 +137,6 @@ background: var(--text-color-bland);
     padding: 10px;
 }
 
-.btn-circle:hover {
-    background-color: #e4e4e4;
-}
-
 .menu-mobile {
     position: absolute;
     top: 0;
@@ -208,7 +204,18 @@ background: var(--text-color-bland);
 }
 
 .stall__product-list {
+    position: relative;
     overflow-x: scroll;
+    overflow-y:hidden;
+    scroll-behavior: smooth;
+    cursor: pointer;
+}
+
+.stall__product-item-sp {
+    position: absolute;
+    height: 20px;
+    width: 100vw;
+    bottom: -10px;
 }
 
 .stall__product-wrap {
@@ -219,7 +226,6 @@ background: var(--text-color-bland);
 
 .stall__product-list::-webkit-scrollbar {
     height: 8px;
-    scrollbar-width: 100px;
 }
 
 .stall__product-list::-webkit-scrollbar-thumb {
@@ -250,8 +256,13 @@ background: var(--text-color-bland);
     margin-left: 10px;
 }
 
-.stall__more-btn:last-child {
+.stall__more-btn.active {
+    cursor: pointer;
     color: var(--text-color);
+}
+
+.stall__more-btn.active:hover {
+    background-color: #e4e4e4;
 }
 
 .stall__product-items {

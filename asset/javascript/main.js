@@ -168,7 +168,7 @@ function open_focus_search_input() {
     header_main_container.classList.add('focus-search-input')
     header__navbar_wrap.classList.add('focus-search-input')
     Header_main_nav_bar_background.classList.remove('hide');
-    Header_main_nav_bar_background.classList.add('show');
+
     header_main__input_box.classList.add('focus-search-input')
     focus_search_input.classList.add('show-mobile-tablet')
     Header_main_nav_bar_btn_open.classList.add('hide-mobile-tablet')
@@ -176,11 +176,15 @@ function open_focus_search_input() {
     header_main__link_nb1.classList.add('hide')
     header_main__link_nb2.classList.add('hide')
     setTimeout(function () {
+
         header_main__input_box_wrap.classList.add('focus-search-input')
         header_main__category_list.classList.add('visibility-hide')
         focus_search_input.classList.add('focus-search-input')
         header_main_container.classList.add('module')
         header_main.classList.add('focus-search-input')
+    }, 100)
+    setTimeout(() => {
+        Header_main_nav_bar_background.classList.add('show');
     }, 100)
     setTimeout(function () {
         header_main__input_top_search_title.classList.add('focus-search-input')
@@ -429,7 +433,6 @@ function slide() {
         'Save Up to 40%',
         'Hello Nike App',
         'Free Delivery',
-        
     ];
     let stringContent = [
         '',
@@ -576,8 +579,72 @@ function mutedVideo() {
     }
     else {
         gearUpVideo.muted = true
-
         videoControlsBtn.classList.add('fa-volume-xmark')
         videoControlsBtn.classList.remove('fa-volume-low')
     };
 };
+
+/***** Scroll bar Stall *****/
+let scrollBarSp = document.querySelectorAll('.stall__product-item-sp'),
+    scrollBars = document.querySelectorAll('.stall__product-list'),
+    btnLeft = document.querySelectorAll('.btn-circle-left'),
+    btnRight = document.querySelectorAll('.btn-circle-right'),
+    beforeValue,
+    afterValue,
+    scrollbarActive,
+    distanceValue = 400
+
+
+function checkElementActive(value) {
+    for (let index of value) {
+        let position = index.getBoundingClientRect()
+        if (position.top <= document.documentElement.clientHeight && position.top >= 0) {
+            return index
+        }
+    }
+}
+
+function activeButton() {
+    let btnRightActive = checkElementActive(btnRight),
+        btnLeftActive = checkElementActive(btnLeft)
+    afterValue = beforeValue > checkElementActive(scrollBars).scrollLeft
+    // console.log(beforeValue)
+    // console.log(checkElementActive(scrollBars).scrollLeft)
+    // console.log(afterValue)
+    if (afterValue) {
+        btnRightActive.classList.remove('active')
+    }
+    else {
+        btnRightActive.classList.add('active')
+    }
+    if (checkElementActive(scrollBars).scrollLeft > 0) {
+        btnLeftActive.classList.add('active')
+    }
+    else {
+        btnLeftActive.classList.remove('active')
+    }
+}
+
+function clickRight(scrollbarActive) {
+    scrollbarActive = checkElementActive(scrollBars)
+    beforeValue = scrollbarActive.scrollLeft + distanceValue
+    scrollbarActive.scrollLeft =
+        (scrollbarActive.scrollLeft + distanceValue);
+    setTimeout(() => { activeButton() }, 400)
+}
+
+function clickLeft(scrollbarActive) {
+    scrollbarActive = checkElementActive(scrollBars)
+    beforeValue = scrollbarActive.scrollLeft - distanceValue
+    scrollbarActive.scrollLeft =
+        (scrollbarActive.scrollLeft - distanceValue);
+    setTimeout(() => { activeButton() }, 400)
+}
+for (let item of scrollBarSp) {
+    item.addEventListener('mouseover', hoverScroll)
+}
+
+function hoverScroll() {
+    setTimeout(() => { activeButton() }, 400)
+}
+
