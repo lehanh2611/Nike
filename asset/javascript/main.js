@@ -95,11 +95,12 @@ header_main__input_box_wrap.addEventListener('mouseover', hide_category_menu)
 for (const category_2_wall of category_2_walls) {
     category_2_wall.addEventListener('click', function (event) { event.stopImmediatePropagation() })
 }
-for (const header_main__category_items of header_main__category_itemss) {
-    header_main__category_items.addEventListener('mouseover', show_category_menu)
-}
+// for (const header_main__category_items of header_main__category_itemss) {
+//     header_main__category_items.addEventListener('mouseover', show_category_menu)
+// }
 
 function show_category_menu() {
+    console.log('show')
     Header_main_nav_bar_background.classList.add('module-category_menu--show-ds');
     setTimeout(function () {
         Header_main_nav_bar_background.classList.add('module-category_menu--show-op');
@@ -108,10 +109,12 @@ function show_category_menu() {
     }, 100);
 }
 function hide_category_menu() {
-    header_main_container.classList.remove('fly')
-    header_main__category_menu.classList.add('hide')
-    Header_main_nav_bar_background.classList.remove('module-category_menu--show-ds');
-    Header_main_nav_bar_background.classList.remove('module-category_menu--show-op');
+    setTimeout(() => {
+        header_main_container.classList.remove('fly')
+        header_main__category_menu.classList.add('hide')
+        Header_main_nav_bar_background.classList.remove('module-category_menu--show-ds');
+        Header_main_nav_bar_background.classList.remove('module-category_menu--show-op');
+    }, 100);
 }
 
 function Header_main_nav_bar_open() {
@@ -606,12 +609,13 @@ function checkElementActive(value) {
 function activeButton() {
     let btnRightActive = checkElementActive(btnRight),
         btnLeftActive = checkElementActive(btnLeft)
-    afterValue = beforeValue > checkElementActive(scrollBars).scrollLeft
+    afterValue = beforeValue === checkElementActive(scrollBars).scrollLeft
     // console.log(beforeValue)
     // console.log(checkElementActive(scrollBars).scrollLeft)
     // console.log(afterValue)
     if (afterValue) {
         btnRightActive.classList.remove('active')
+        checkElementActive(scrollBars).scrollLeft = 0
     }
     else {
         btnRightActive.classList.add('active')
@@ -622,11 +626,15 @@ function activeButton() {
     else {
         btnLeftActive.classList.remove('active')
     }
+
+    if (beforeValue < 0) {
+        checkElementActive(scrollBars).scrollLeft = 9e6
+    }
 }
 
 function clickRight(scrollbarActive) {
     scrollbarActive = checkElementActive(scrollBars)
-    beforeValue = scrollbarActive.scrollLeft + ++distanceValue
+    beforeValue = scrollbarActive.scrollLeft
     scrollbarActive.scrollLeft =
         (scrollbarActive.scrollLeft + ++distanceValue);
     setTimeout(() => { activeButton() }, 400)
@@ -634,9 +642,10 @@ function clickRight(scrollbarActive) {
 
 function clickLeft(scrollbarActive) {
     scrollbarActive = checkElementActive(scrollBars)
-    beforeValue = scrollbarActive.scrollLeft - distanceValue
-    scrollbarActive.scrollLeft =
-        (scrollbarActive.scrollLeft - distanceValue);
+    beforeValue = --scrollbarActive.scrollLeft
+    console.log(beforeValue)
+    scrollbarActive.scrollLeft = 
+    (scrollbarActive.scrollLeft - distanceValue);
     setTimeout(() => { activeButton() }, 400)
 }
 
