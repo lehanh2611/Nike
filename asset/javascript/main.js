@@ -594,7 +594,6 @@ let scrollBarSp = document.querySelectorAll('.stall__product-item-sp'),
     scrollbarActive,
     distanceValue = 400
 
-
 function checkElementActive(value) {
     for (let index of value) {
         let position = index.getBoundingClientRect()
@@ -640,6 +639,7 @@ function clickLeft(scrollbarActive) {
         (scrollbarActive.scrollLeft - distanceValue);
     setTimeout(() => { activeButton() }, 400)
 }
+
 for (let item of scrollBarSp) {
     item.addEventListener('mouseover', hoverScroll)
 }
