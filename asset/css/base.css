@@ -22,6 +22,7 @@ html {
     font-size: 10px;
     box-sizing: border-box;
     font-family: Helvetica;
+    scroll-behavior: smooth;
 }
 
 .main {

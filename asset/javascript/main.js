@@ -100,7 +100,6 @@ for (const category_2_wall of category_2_walls) {
 // }
 
 function show_category_menu() {
-    console.log('show')
     Header_main_nav_bar_background.classList.add('module-category_menu--show-ds');
     setTimeout(function () {
         Header_main_nav_bar_background.classList.add('module-category_menu--show-op');
@@ -168,10 +167,10 @@ function back_menu_child_2() {
 }
 
 function open_focus_search_input() {
+    stopShowHeader = "stop"
     header_main_container.classList.add('focus-search-input')
     header__navbar_wrap.classList.add('focus-search-input')
     Header_main_nav_bar_background.classList.remove('hide');
-
     header_main__input_box.classList.add('focus-search-input')
     focus_search_input.classList.add('show-mobile-tablet')
     Header_main_nav_bar_btn_open.classList.add('hide-mobile-tablet')
@@ -179,7 +178,6 @@ function open_focus_search_input() {
     header_main__link_nb1.classList.add('hide')
     header_main__link_nb2.classList.add('hide')
     setTimeout(function () {
-
         header_main__input_box_wrap.classList.add('focus-search-input')
         header_main__category_list.classList.add('visibility-hide')
         focus_search_input.classList.add('focus-search-input')
@@ -191,11 +189,11 @@ function open_focus_search_input() {
     }, 100)
     setTimeout(function () {
         header_main__input_top_search_title.classList.add('focus-search-input')
-        header_main_cancel_btn.classList.remove('hide')
-    }, 480)
+    }, 360)
     setTimeout(function () {
+        header_main_cancel_btn.classList.remove('hide')
         header_main__input_top_search_list.classList.add('focus-search-input')
-    }, 510)
+    }, 400)
     setTimeout(function () {
         header_main__input_top_search_list.classList.add('focus-search-input')
         header_main__category_list.classList.add('opacity-0')
@@ -205,6 +203,7 @@ function open_focus_search_input() {
 }
 
 function close_focus_search_input() {
+    stopShowHeader = "run"
     header_main_container.classList.remove('focus-search-input')
     Header_main_nav_bar_background.classList.remove('show');
     Header_main_nav_bar_background.classList.add('hide');
@@ -642,10 +641,9 @@ function clickRight(scrollbarActive) {
 
 function clickLeft(scrollbarActive) {
     scrollbarActive = checkElementActive(scrollBars)
-    beforeValue = --scrollbarActive.scrollLeft
-    console.log(beforeValue)
-    scrollbarActive.scrollLeft = 
-    (scrollbarActive.scrollLeft - distanceValue);
+    beforeValue = --scrollbarActive.scrollLeft;
+    scrollbarActive.scrollLeft =
+        (scrollbarActive.scrollLeft - distanceValue);
     setTimeout(() => { activeButton() }, 400)
 }
 
@@ -657,3 +655,30 @@ function hoverScroll() {
     setTimeout(() => { activeButton() }, 400)
 }
 
+/***** Scroll show header *****/
+let oldScrollY = window.scrollY,
+    stopShowHeader = "run",
+    subHeaderActive = document.querySelector('.sub-header-content-slide')
+
+window.onscroll = function () {
+    let position = subHeaderActive.getBoundingClientRect()
+    if (stopShowHeader === "stop") { return }
+    if (position.top < document.documentElement.clientHeight && position.top > 0) {
+        header_main_container.classList.remove('fly-aimation')
+    }
+    else {
+        if (oldScrollY < window.scrollY) {
+            header_main_container.classList.remove('module')
+            header_main_container.classList.add('fly-aimation-out')
+            setTimeout(() => {
+                header_main_container.classList.remove('fly-aimation')
+                header_main_container.classList.add('module')
+            }, 100)
+        } else {
+            header_main_container.classList.remove('module')
+            header_main_container.classList.add('fly-aimation')
+            header_main_container.classList.remove('fly-aimation-out')
+        }
+        oldScrollY = window.scrollY;
+    }
+}
