@@ -346,12 +346,13 @@ background: var(--text-color-bland);
 }
 
 .banner-home__text {
+    color: var(--text-color);
     font-size: 1.8rem;
 }
 
 .banner-home__title {
     display: flex;
-    color: inherit;
+    color: var(--text-color);
     font-size: 7rem;
     font-weight: 900;
     text-transform: uppercase;
