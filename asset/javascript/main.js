@@ -90,30 +90,40 @@ category_2__title_close_btn_2.addEventListener('click', hide_category_2__title_2
 category_2__title_close_btn_3.addEventListener('click', hide_category_2__title_3)
 category_2__title_close_btn_4.addEventListener('click', hide_category_2__title_4)
 Header_main_nav_bar_background.addEventListener('mouseover', hide_category_menu)
-header_main__logo_box.addEventListener('mouseover', hide_category_menu)
-header_main__input_box_wrap.addEventListener('mouseover', hide_category_menu)
 for (const category_2_wall of category_2_walls) {
     category_2_wall.addEventListener('click', function (event) { event.stopImmediatePropagation() })
 }
-// for (const header_main__category_items of header_main__category_itemss) {
-//     header_main__category_items.addEventListener('mouseover', show_category_menu)
-// }
-
+let menuWrap = document.querySelector('.header-main__category-menu-wrap')
 function show_category_menu() {
-    Header_main_nav_bar_background.classList.add('module-category_menu--show-ds');
-    setTimeout(function () {
-        Header_main_nav_bar_background.classList.add('module-category_menu--show-op');
-        header_main_container.classList.add('fly')
-        header_main__category_menu.classList.remove('hide')
-    }, 100);
+    stopShowHeader = "stop"
+    Header_main_nav_bar_background.classList.remove('show')
+    Header_main_nav_bar_background.classList.add('hide');
+    let navBar = document.querySelector('.header__navbar-wrap')
+    menuWrap.classList.add('animation')
+    menuWrap.classList.remove('opacity-0')
+    navBar.style.zIndex = 5;
+    header_main_container.classList.add('fly')
+    header_main__category_menu.classList.remove('animation-out')
+    header_main__category_menu.classList.remove('hide')
+    header_main__category_menu.classList.add('animation')
+    Header_main_nav_bar_background.classList.remove('hide');
+    setTimeout(() => {
+    }, 10);
+    setTimeout(() => {
+        Header_main_nav_bar_background.classList.add('show');
+    }, 200);
 }
 function hide_category_menu() {
+    header_main__category_menu.classList.remove('animation')
+    Header_main_nav_bar_background.classList.remove('show')
+    header_main__category_menu.classList.add('animation-out')
+    Header_main_nav_bar_background.classList.add('hide');
+    menuWrap.classList.add('opacity-0')
     setTimeout(() => {
         header_main_container.classList.remove('fly')
         header_main__category_menu.classList.add('hide')
-        Header_main_nav_bar_background.classList.remove('module-category_menu--show-ds');
-        Header_main_nav_bar_background.classList.remove('module-category_menu--show-op');
-    }, 100);
+        stopShowHeader = "run"
+    }, 200);
 }
 
 function Header_main_nav_bar_open() {
@@ -682,3 +692,416 @@ window.onscroll = function () {
         oldScrollY = window.scrollY;
     }
 }
+
+/***** Render items for Categoty menu *****/
+let renderContainer = document.querySelector('.header-main__category-menu-wrap'),
+    menuListTitle = document.querySelector('.header-main__category-list')
+
+listTitleItem = [
+    {
+        name: 'Men',
+        value: [
+            'New & Featured',
+            'Shoes',
+            'Clothing',
+            'Shop By Sport',
+            'Shop By Brand'
+        ]
+    },
+    {
+        name: 'Women',
+        value: [
+            'New & Featured',
+            'Shoes',
+            'Clothing',
+            'Shop By Sport',
+            'Shop By Brand'
+        ]
+    },
+    {
+        name: 'Kids',
+        value: [
+            'New & Featured',
+            'Boys\'Shoes',
+            'Grils\'Shoes',
+            'Accessories and Equipment',
+            'Shop By Sport',
+            'Boys\'Clothing',
+            'Grils\'Clothing',
+        ]
+    },
+    {
+        name: 'Customise',
+        value: [
+            'Featured',
+            'Nike By You',
+            'Shop By Sport',
+            'Icon',
+        ]
+    },
+    {
+        name: 'Sale',
+        value: [
+            'Featured',
+            'Men\'s Sale',
+            'Women\'s Sale',
+            'Kid\'s Sale',
+        ]
+    },
+    {
+        name: 'Gifts🎁',
+        value: [
+            'Gifts For All',
+            'Top Gifts For Him',
+            'Top Gifts For Her',
+            'Top Gifts For Kids',
+            'Gifts by Price',
+            'Gifts by icons',
+        ]
+    },
+    {
+        name: 'SNKRS',
+        value: [
+            'Gifts For All',
+            'Top Gifts For Him',
+            'Top Gifts For Her',
+            'Top Gifts For Kids',
+            'Gifts by Price',
+            'Gifts by icons',
+        ]
+    },
+],
+    listTitleContent = [
+        {
+            name: 'New & Featured',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Shoes',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Clothing',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Shop By Sport',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Icon',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Shop By Brand',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'New & Featured',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Boys\'Shoes',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Grils\'Shoes',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Accessories and Equipment',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Shop By Sport',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Boys\'Clothing',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Grils\'Clothing',
+            value: [
+                'New Releases',
+                'SNKRS Launch Calendar',
+                'Member Access',
+                'Air Force 1',
+                'Basic Essentials',
+                'Football Club Kits',
+                'Top Picks Under',
+                'Sale'
+            ],
+        },
+        {
+            name: 'Featured',
+            value: [
+                'Nike By You New Releases',
+            ],
+        },
+        {
+            name: 'Nike By You',
+            value: [
+                'Men',
+                'Women',
+            ],
+        },
+        {
+            name: 'Shop By Sport',
+            value: [
+                'Lifestyle',
+                'Running',
+                'Basketball',
+                'Football',
+            ],
+        },
+        {
+            name: 'Icon',
+            value: [
+                'Air Max',
+                'Air Force1',
+                'Free',
+                'Flyknit',
+            ],
+        },
+        {
+            name: 'Featured',
+            value: [
+                'Shop All Sale',
+            ],
+        },
+        {
+            name: 'Men\'s Sale',
+            value: [
+                'Shoes',
+                'Clothing',
+                'Accessories and Equiment',
+                'Flyknit',
+            ],
+        },
+        {
+            name: 'Women\'s Sale',
+            value: [
+                'Shoes',
+                'Clothing',
+                'Accessories and Equiment',
+                'Flyknit',
+            ],
+        },
+        {
+            name: 'Kid\'s Sale',
+            value: [
+                'Shoes',
+                'Clothing',
+                'Accessories and Equiment',
+                'Flyknit',
+            ],
+        },
+        {
+            name: 'Gifts For All',
+            value: [
+                'Shop All Gifts',
+                'Gift Guide',
+                'For The Runner',
+                'For The Nike Lover',
+                'For The Lil & Big Kids',
+                'For The Sneakerhead',
+                'For The Moms',
+            ],
+        },
+        {
+            name: 'Top Gifts For Him',
+            value: [
+                'Shop All Gifts',
+                'Shoese',
+                'Clothing',
+                'Accessories and Equiment',
+                'On Sale',
+            ],
+        },
+        {
+            name: 'Top Gifts For Her',
+            value: [
+                'Shop All Gifts',
+                'Shoese',
+                'Clothing',
+                'Accessories and Equiment',
+                'On Sale',
+            ],
+        },
+        {
+            name: 'Top Gifts For Kids',
+            value: [
+                'Shop All Gifts',
+                'Shoese',
+                'Clothing',
+                'Accessories and Equiment',
+                'On Sale',
+            ],
+        },
+        {
+            name: 'Gifts by Price',
+            value: [
+                'Gifts 1,000,000đ and Under',
+                'Gifts 1,000,000đ - 2,000,000đ',
+                'Gifts 2,000,000đ - 3,000,000đ',
+                'Gifts above 3,000,000đ',
+            ],
+        },
+        {
+            name: 'Gifts by icons',
+            value: [
+                'Air Force 1',
+                'Air Jordan 1',
+                'Air Max',
+                'Blazer',
+                'Pegasus',
+            ],
+        },
+    ]
+renderItems(menuListTitle, listTitleItem, listTitleContent)
+function renderItems(elementTile, titleList, contentList) {
+    for (item of elementTile.children) {
+        item.addEventListener('mouseover', pushOutHtml)
+        item.addEventListener('mouseout', aniout)
+    }
+    function pushOutHtml() {
+        aniin()
+        for (titleItem of titleList) {
+            if (titleItem.name === this.innerText) {
+                let result
+                let output = titleItem.value.reduce((accmulateValue, currentValue) => {
+                    for (contentItem of contentList) {
+                        if (currentValue === contentItem.name) {
+                            let accmulateContent = ""
+                            for (item of contentItem.value) {
+                                accmulateContent += `<a href="javascript:void(0);" class="header-main__category-menu-items">${item}</a>`
+                            }
+                            result = `<div class="category__column"><div class="header-main__category-menu-list">${currentValue}${accmulateContent}</div></div>`
+                        }
+                    }
+                    return accmulateValue += result
+                }, "")
+                renderContainer.innerHTML = output
+            }
+        }
+    }
+    function aniin() {
+        setTimeout(() => {
+            menuWrap.classList.remove('opacity-0')
+            menuWrap.classList.add('animation')
+        }, 0)
+    }
+    function aniout() {
+        menuWrap.classList.remove('animation')
+    }
+}
+
