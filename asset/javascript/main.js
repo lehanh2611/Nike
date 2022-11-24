@@ -111,7 +111,7 @@ function show_category_menu() {
     }, 10);
     setTimeout(() => {
         Header_main_nav_bar_background.classList.add('show');
-    }, 200);
+    }, 100);
 }
 function hide_category_menu() {
     header_main__category_menu.classList.remove('animation')
