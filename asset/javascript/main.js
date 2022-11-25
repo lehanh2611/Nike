@@ -94,6 +94,7 @@ for (const category_2_wall of category_2_walls) {
     category_2_wall.addEventListener('click', function (event) { event.stopImmediatePropagation() })
 }
 let menuWrap = document.querySelector('.header-main__category-menu-wrap')
+header_main__category_list.addEventListener('mouseenter', show_category_menu)
 function show_category_menu() {
     stopShowHeader = "stop"
     Header_main_nav_bar_background.classList.remove('show')
@@ -113,6 +114,7 @@ function show_category_menu() {
         Header_main_nav_bar_background.classList.add('show');
     }, 100);
 }
+header_main__category_list.addEventListener('mouseleave', hide_category_menu)
 function hide_category_menu() {
     header_main__category_menu.classList.remove('animation')
     Header_main_nav_bar_background.classList.remove('show')
@@ -708,8 +710,7 @@ window.onscroll = function () {
 
 /***** Render items for Categoty menu *****/
 let renderContainer = document.querySelector('.header-main__category-menu-wrap'),
-    menuListTitle = document.querySelector('.header-main__category-list')
-
+    menuListTitle = document.querySelector('.header-main__category-list'),
 listTitleItem = [
     {
         name: 'Men',
@@ -1082,20 +1083,20 @@ listTitleItem = [
     ]
 renderItems(menuListTitle, listTitleItem, listTitleContent)
 function renderItems(elementTile, titleList, contentList) {
-    for (item of elementTile.children) {
+    for (let item of elementTile.children) {
         item.addEventListener('mouseover', pushOutHtml)
         item.addEventListener('mouseout', aniout)
     }
     function pushOutHtml() {
         aniin()
-        for (titleItem of titleList) {
+        for (let titleItem of titleList) {
             if (titleItem.name === this.innerText) {
                 let result
                 let output = titleItem.value.reduce((accmulateValue, currentValue) => {
-                    for (contentItem of contentList) {
+                    for (let contentItem of contentList) {
                         if (currentValue === contentItem.name) {
                             let accmulateContent = ""
-                            for (item of contentItem.value) {
+                            for (let item of contentItem.value) {
                                 accmulateContent += `<a href="javascript:void(0);" class="header-main__category-menu-items">${item}</a>`
                             }
                             result = `<div class="category__column"><div class="header-main__category-menu-list">${currentValue}${accmulateContent}</div></div>`
