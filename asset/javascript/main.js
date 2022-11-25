@@ -640,21 +640,46 @@ function activeButton() {
         checkElementActive(scrollBars).scrollLeft = 9e6
     }
 }
+/** selectEvent **/
+function selectEvent(event, atcEvent, nameEvent, listElement) {
+    if (event === "add") {
+        for (let element of listElement) {
+            element.addEventListener(atcEvent, nameEvent)
+        }
+    }
+    if (event === "remove") {
+        for (let element of listElement) {
+            element.removeEventListener(atcEvent, nameEvent)
+        }
+    }
+}
 
+let stallBtnRight = document.querySelectorAll('.btn-circle-right')
+selectEvent("add", "click", clickRight, stallBtnRight)
 function clickRight(scrollbarActive) {
+    selectEvent("remove", "click", clickRight, stallBtnRight)
     scrollbarActive = checkElementActive(scrollBars)
     beforeValue = scrollbarActive.scrollLeft
     scrollbarActive.scrollLeft =
         (scrollbarActive.scrollLeft + ++distanceValue);
-    setTimeout(() => { activeButton() }, 400)
+    setTimeout(() => {
+        activeButton()
+        selectEvent("add", "click", clickRight, stallBtnRight)
+    }, 400)
 }
 
+let stallBtnLeft = document.querySelectorAll('.btn-circle-left')
+selectEvent("add", "click", clickLeft, stallBtnLeft)
 function clickLeft(scrollbarActive) {
+    selectEvent("remove", "click", clickLeft, stallBtnLeft)
     scrollbarActive = checkElementActive(scrollBars)
     beforeValue = --scrollbarActive.scrollLeft;
     scrollbarActive.scrollLeft =
         (scrollbarActive.scrollLeft - distanceValue);
-    setTimeout(() => { activeButton() }, 400)
+    setTimeout(() => {
+        activeButton()
+        selectEvent("add", "click", clickLeft, stallBtnLeft)
+    }, 400)
 }
 
 for (let item of scrollBarSp) {
