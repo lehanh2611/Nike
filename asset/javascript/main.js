@@ -640,19 +640,7 @@ function activeButton() {
         checkElementActive(scrollBars).scrollLeft = 9e6
     }
 }
-/** createEvents **/
-function createEvents(event, atcEvent, nameEvent, listElement) {
-    if (event === "add") {
-        for (let element of listElement) {
-            element.addEventListener(atcEvent, nameEvent)
-        }
-    }
-    if (event === "remove") {
-        for (let element of listElement) {
-            element.removeEventListener(atcEvent, nameEvent)
-        }
-    }
-}
+import {createEvents} from './base.js';
 
 let stallBtnRight = document.querySelectorAll('.btn-circle-right')
 createEvents("add", "click", clickRight, stallBtnRight)
